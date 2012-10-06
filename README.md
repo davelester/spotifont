@@ -1,2 +1,2 @@
-spontify
+spontifont
 ========
