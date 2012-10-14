@@ -1,2 +1,2 @@
-spontifont
+spotifont
 ========
