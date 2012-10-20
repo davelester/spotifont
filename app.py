@@ -24,5 +24,9 @@ def search(query):
 	fontnames = g.db.iter("select f.* FROM Fonts AS f")
 	return render_template("search.html", fontnames=fontnames)
 
+@app.route("/font/<fontname>")
+def font(name):
+	return render_template("font.html")
+
 if __name__ == "__main__":
     app.run()
