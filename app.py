@@ -1,19 +1,25 @@
 from tornado.database import Connection
+from flask import request
 from os import environ
-from flask import Flask, g, render_template, Response, url_for, request, session, flash, redirect
+from flask import Flask, g, render_template, Response, redirect, url_for, flash, request, session
+from flask_oauth import OAuth
 import config
 
-
-#Configuration, the default log-in name is username = admin, and password = default
-USERNAME = "admin"
-PASSWORD = "default"
-SECRET_KEY = 'development key'
-
 app = Flask(__name__)
-app.config.from_object(__name__)
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+app.debug = config.DEBUG
+app.secret_key = config.SECRET_KEY
+oauth = OAuth()
 
-app.debug = True
+# Facebook-specific OAuth Config
+facebook = oauth.remote_app('facebook',
+    base_url='https://graph.facebook.com/',
+    request_token_url=None,
+    access_token_url='/oauth/access_token',
+    authorize_url='https://www.facebook.com/dialog/oauth',
+    consumer_key=config.FACEBOOK_APP_ID,
+    consumer_secret=config.FACEBOOK_APP_SECRET,
+    request_token_params={'scope': 'email'}
+)
 
 @app.before_request
 def connect_db():
@@ -40,7 +46,7 @@ def search(query):
 		for font in fonts:
 			ret+='{"fontname": "' + font.font_name +'", "controlled": "' + font.controlled_name +'"}'
 	else:
-		ret+='{"error": "We pity the fool who does a query with no results. sucka!"}'
+		ret+='{"error": "We pity the fool who does a query with no results. suck"}'
 	ret += ']'
 
 
@@ -56,43 +62,30 @@ def font(fontname):
 	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.font_name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id AND t.type='u'")
 	return render_template("font.html", tags=tags)
 
-@app.route('/login', methods=['GET', 'POST'])
+
+@app.route('/login')
 def login():
-  error = None
-  if request.method == 'POST':
-    if request.form['username'] != app.config['USERNAME']: #where USERNAME = admin
-      error = 'Invalid username'
-    elif request.form['password'] != app.config['PASSWORD']:#where PASSWORD = default
-      error = 'Invalid password'
-    else:
-      session['logged_in'] = True
-      flash('You were logged in')
-      return redirect("/")
-  return render_template('login.html', error=error)
+    return facebook.authorize(callback=url_for('facebook_authorized',
+        next=request.args.get('next') or request.referrer or None,
+        _external=True))
 
 
-@app.route('/logout')
-def logout():
-    session.pop('logged_in', None)
-    flash('You were logged out')
-    return redirect("/login")
+@app.route('/login/authorized')
+@facebook.authorized_handler
+def facebook_authorized(resp):
+	if resp is None:
+		return 'Access denied: reason=%s error=%s' % (
+			request.args['error_reason'],
+			request.args['error_description']
+		)
+	session['oauth_token'] = (resp['access_token'], '')
+	me = facebook.get('/me')
+	return render_template("index.html")
 
 
-#this is to test if the table is returning the correct usernames
-@app.route('/fetch')
-def fetch():
-  usernames = list(g.db.iter("SELECT username, password FROM Users"))
-  return render_template("test.html", user=usernames)
-
-
-#the following method should get new user to register, though I am not sure how to INSERT INTO database
-'''@app.route('/register', methods=['GET', 'POST'])
-def register():
-  user = request.form.get['username']
-  pw = request.form.get['password']
-  g.db("INSERT INTO Users (id, username, password) VALUES (3, user, pw)")
-
-  return render_template("register.html", user=user, password=pw)'''
+@facebook.tokengetter
+def get_facebook_oauth_token():
+    return session.get('oauth_token')
 
 if __name__ == "__main__":
     app.run()
