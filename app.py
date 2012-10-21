@@ -1,8 +1,10 @@
 from tornado.database import Connection
+from flask import request
+from os import environ
 from flask import Flask, g, render_template
 app = Flask(__name__)
 import config
-import request
+
 
 app.debug = True
 
@@ -32,6 +34,21 @@ def font(fontname):
 	# todo: should pull only unique tags, and also return the count of the times a tag appears for a given font
 	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.font_name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id AND t.type='u'")
 	return render_template("font.html", tags=tags)
+
+'''@app.route("/login", methods=["GET","POST"])
+def login():
+  error = None
+  if request.method == 'POST':
+      if request.form['username'] != config['SPOTIFONT_DB_USER']:
+          error = 'Invalid username'
+      elif request.form['password'] != config['SPOTIFONT_DB_PASSWD']:
+          error = 'Invalid password'
+      else:
+          session['logged_in'] = True
+          flash('You were logged in')
+          return redirect(url_for('show_entries'))
+  return render_template('login.html', error=error)'''
+
 
 if __name__ == "__main__":
     app.run()
