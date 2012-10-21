@@ -15,3 +15,8 @@ A site for font discovery. "Spotify for fonts."
 ### Browser Support
 
 ### Bugs, Quirks, Easter Eggs
+
+## Examples of Search API
+The Search API is accessible by visiting localhost/search/tagname, where '''tagname''' is the uncontrolled term that's being searched for.
+
+The response looks like this: '''[ {"fontname": "Arial", "controlled": "Sans-Serif" }, {"fontname": "Garamond", "controlled": "Serif" } ]'''
