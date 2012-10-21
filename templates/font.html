@@ -20,37 +20,26 @@
 <body>
 	<div id="container">
 		<div id="font_name"><h1>{{name}}</h1></div><!--font_name-->
-		<div id="pangram">
-			<h2>Pangram</h2>
-			<p>Cwm fjord veg balks nth pyx quiz.</p>
-		</div>
-		<div id ="tags">
+		<h2>Pangram</h2>
+		<p class="panagram">Cwm fjord veg balks nth pyx quiz.</p>
 
+		<h2>Controlled Vocabulary</h2>
+		<p>Will be pulled from database</p>
 
-		</div>
-	
-		 <form action=".">
-		    <!--<div class="row">-->
-		      <label for="jquery-tagbox-text">Text TagBox </label>
-		      <input type="text" id="jquery-tagbox-text" />
-		    <!--</div><!--div.row-->
-		 </form>
-
-		 {% for tag in tags %}
-		<h3>{{ tags.name}}</h3>
+		<h2>Tags</h2>
+		<ul class="taglist">	
+		{% for tag in tags %}
+			<li>{{ tag.tag_name}}</li>
 		{% endfor %}
-
-
+		</ul>
+		
+		<h2>Add your own tags</h2>
+		{% if userid %}
+		<p><a href="/font/{{name}}/addtags">Add tags to this font!</a></p>
+		{% else %}
+    <p>Add tags to this font by logging in! <a href="/login"><img src="../static/img/facebook-login-button.png"></a></p>
+		{% endif %}
+		
 	</div><!--container-->
 </body>
-
-
-
-
-
-
-
 </html>
-
-
-

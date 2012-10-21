@@ -57,8 +57,8 @@ def search(query):
 def font(fontname):
 	# todo: should pull only unique tags, and also return the count of the times a tag appears for a given font
 	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.font_name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id")
-	l = list(tags)
-	return render_template("font.html", tags=tags, list=l, name=fontname)
+	userid = session.get('userid')
+	return render_template("font.html", tags=tags, name=fontname, userid=userid)
 
 
 @app.route('/login')
