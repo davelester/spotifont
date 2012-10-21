@@ -21,6 +21,22 @@
     <!-- These are for buttons -->
     <script src="../static/js/bootstrap.min.js"></script>
 
+
+<!-- test test -->
+  <script>
+  $(document).ready(function(){
+    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?",
+        function(data){
+          $.each(data.items, function(i,item){
+            $("<img/>").attr("src", item.media.m).appendTo("#images");
+            if ( i == 3 ) return false;
+          });
+        });
+  });
+  </script>
+
+  <div id="images"></div>
+
     <!-- Header -->
     <div id="header">
         <a id="logo" href="index.html"><img src="../static/img/logo.png" alt="Spotifont" /></a>
@@ -40,10 +56,10 @@
         <!-- Filter -->
         <div id="filter">
             <div id="filterButtons" class="btn-group" data-toggle="buttons-checkbox" >
-              <button type="button" class="btn btn-large" id="serif">SF</button>
-              <button type="button" class="btn btn-large" id="sansserif">SF</button>
-              <button type="button" class="btn btn-large" id="display">SF</button>
-              <button type="button" class="btn btn-large" id="handwriting">SF</button>
+              <button type="button" class="btn btn-large" id="serifButton">SF</button>
+              <button type="button" class="btn btn-large" id="sansserifButton">SF</button>
+              <button type="button" class="btn btn-large" id="displayButton">SF</button>
+              <button type="button" class="btn btn-large" id="handwritingButton">SF</button>
             </div>
             <table id="filterLabels">
                 <tr>
