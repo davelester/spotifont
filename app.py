@@ -21,12 +21,13 @@ def index():
 
 @app.route("/search/<query>")
 def search(query):
-	fontnames = g.db.iter("select f.* FROM Fonts AS f")
-	return render_template("search.html", fontnames=fontnames)
+	fonts = g.db.iter("SELECT DISTINCT f.font_name, c.controlled_name FROM Fonts AS f, Tags as t, Tag_Links as tl, Controlled as c WHERE c.font_id=f.id AND f.id=tl.font_id AND tl.tag_id=t.id AND t.tag_name='" + query + "'")
+	return render_template("search.html", fonts=fonts)
 
 @app.route("/font/<fontname>")
 def font(fontname):
-	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id AND t.type='u'")
+	# todo: should pull only unique tags, and also return the count of the times a tag appears for a given font
+	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.font_name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id AND t.type='u'")
 	return render_template("font.html", tags=tags)
 
 if __name__ == "__main__":
