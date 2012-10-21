@@ -6,7 +6,8 @@ body {width:960px; margin:0 auto; background-image:url("../img/grey.png"); }
 #header {background-color:#F7931E; padding:0; height:75px; width:960px; border-bottom:solid #CC5323; display:block;}
 
 #logo {}
-#login {display:inline; position:relative; top:-10px; left:650px; padding:10px;}
+#login {display:inline; position:relative; top:-10px; left:600px; padding:10px;}
+#logout {display:inline; position:relative; top:-10px; left:600px; padding:10px;}
 
 
 /* Search and Filter */
