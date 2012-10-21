@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.25)
 # Database: spotifont
-# Generation Time: 2012-10-20 23:38:17 +0000
+# Generation Time: 2012-10-21 04:48:31 +0000
 # ************************************************************
 
 
@@ -20,6 +20,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+# Dump of table Controlled
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `Controlled`;
+
+CREATE TABLE `Controlled` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `font_id` int(11) DEFAULT NULL,
+  `controlled_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `Controlled` WRITE;
+/*!40000 ALTER TABLE `Controlled` DISABLE KEYS */;
+
+INSERT INTO `Controlled` (`id`, `font_id`, `controlled_name`)
+VALUES
+	(1,7,'Serif'),
+	(2,6,'Sans-Serif');
+
+/*!40000 ALTER TABLE `Controlled` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table Fonts
 # ------------------------------------------------------------
 
@@ -27,14 +51,14 @@ DROP TABLE IF EXISTS `Fonts`;
 
 CREATE TABLE `Fonts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `font_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `Fonts` WRITE;
 /*!40000 ALTER TABLE `Fonts` DISABLE KEYS */;
 
-INSERT INTO `Fonts` (`id`, `name`)
+INSERT INTO `Fonts` (`id`, `font_name`)
 VALUES
 	(6,'Dave'),
 	(7,'Garamond'),
@@ -64,9 +88,9 @@ LOCK TABLES `Tag_Links` WRITE;
 INSERT INTO `Tag_Links` (`id`, `font_id`, `tag_id`, `user_id`, `timestamp`)
 VALUES
 	(1,6,6,2,'2012-10-20 13:42:54'),
-	(2,6,7,1,'2012-10-20 13:42:53'),
 	(3,6,8,2,'2012-10-20 13:43:03'),
-	(4,7,7,1,'2012-10-20 13:59:25');
+	(5,7,8,2,'2012-10-20 17:14:30'),
+	(6,7,8,3,'2012-10-20 17:17:21');
 
 /*!40000 ALTER TABLE `Tag_Links` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -80,17 +104,16 @@ DROP TABLE IF EXISTS `Tags`;
 CREATE TABLE `Tags` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(2) NOT NULL DEFAULT '',
-  `name` varchar(255) NOT NULL DEFAULT '',
+  `tag_name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `Tags` WRITE;
 /*!40000 ALTER TABLE `Tags` DISABLE KEYS */;
 
-INSERT INTO `Tags` (`id`, `type`, `name`)
+INSERT INTO `Tags` (`id`, `type`, `tag_name`)
 VALUES
 	(6,'u','fancy'),
-	(7,'c','Serif'),
 	(8,'u','thematrix');
 
 /*!40000 ALTER TABLE `Tags` ENABLE KEYS */;
@@ -114,7 +137,8 @@ LOCK TABLES `Users` WRITE;
 INSERT INTO `Users` (`id`, `username`)
 VALUES
 	(1,'spotibot'),
-	(2,'dave');
+	(2,'dave'),
+	(4,'glushko');
 
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
