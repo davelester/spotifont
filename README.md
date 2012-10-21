@@ -4,13 +4,14 @@ Spotifont
 A site for font discovery. "Spotify for fonts." 
 
 ## Project Team and Roles
-* [Dave Lester](http://davelester.org)
-* [Taeil Kwak](http://www.ischool.berkeley.edu/people/students/taeilkwak)
-* [Aijia Yan](http://aijiayan.com)
+* [Dave Lester](http://davelester.org) - Database and Python Nerd
+* [Taeil Kwak](http://www.ischool.berkeley.edu/people/students/taeilkwak) - Front-end Design Champion. Brings team member Froyo because he's awesome.
+* [Aijia Yan](http://aijiayan.com) - Front-end, Javascript, and Python Wiz.
 
 ## What's Under the Hood
 
 ### Technologies Used
+Python (Flask, Tornado DB), HTML, CSS, Javascript
 
 ### Browser Support
 
