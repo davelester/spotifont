@@ -2,6 +2,9 @@ from tornado.database import Connection
 from flask import Flask, g, render_template
 app = Flask(__name__)
 import config
+import request
+
+app.debug = True
 
 @app.before_request
 def connect_db():
@@ -24,7 +27,7 @@ def search(query):
 	fontnames = g.db.iter("select f.* FROM Fonts AS f")
 	return render_template("search.html", fontnames=fontnames)
 
-@app.route("/font/<fontname>")
+@app.route("/font/<fontname>" )
 def font(fontname):
 	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id AND t.type='u'")
 	return render_template("font.html", tags=tags)

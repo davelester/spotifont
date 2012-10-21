@@ -21,6 +21,37 @@
     <!-- These are for buttons -->
     <script src="../static/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript">
+        var data = [{"fontname":"Waiting For The Sunrise", "controlled":"serif"},
+                    {"fontname": "Abril Fatface", "controlled":"serif"}, 
+                    {"fontname": "Actor", "controlled":"sans-serif"},
+                    {"fontname": "Aijia", "controlled":"display"},
+                    {"fontname": "Taeil", "controlled":"handwriting"},
+                    {"fontname": "Gilbert", "controlled":"display"},
+                  ];
+
+
+
+        $(document).ready(function()  {
+
+             //$.each(data, function(index, value) {//each object in "data"
+                //$.each(value, function(key,val) {//each key/value pair 
+                    //var items=[];
+
+                    $("#serif").click(function() {
+                        $('li(class=".box.serif")').toggle("slow", function() {
+                            console.log("toggled");
+                        });
+                    });
+
+                   
+               // });
+           // });
+        });
+    </script>
+
+
+
     <!-- Header -->
     <div id="header">
         <a id="logo" href="index.html"><img src="../static/img/logo.png" alt="Spotifont" /></a>
@@ -58,36 +89,30 @@
 
     <!-- Results / Boxes -->
     <ul id="boxes">
-        <li class="box">
-            <ul class="tagCloud">
-                <li class="tag3">avant garde</li>
-                <li class="tag5">cool</li>
-                <li class="tag1">eurostile</li>
-                <li class="tag5">experimental</li>
-            </ul>
-           
-            <p class="fontName"><a href="font/Dave">Waiting For The Sunrise</a></p>
+        <li class="box serif">
+            <p class="cloud">Tag Tag Tag</p>
+            <p class="fontName"><a href="font/Waiting For The Sunrise">Waiting For The Sunrise</a></p>
 
         </li>
-        <li class="box">
+        <li class="box serif">
             <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Dave">Font2</a></p>
+            <p class="fontName"><a href="font/Abril Fatface">Abril Fatface</a></p>
         </li>
-        <li class="box">
+        <li class="box sans-serif">
             <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Dave">Font3</a></p>
+            <p class="fontName"><a href="font/Actor">Actor</a></p>
         </li>
-        <li class="box">
+        <li class="box display">
             <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Dave">Font4</a></p>
+            <p class="fontName"><a href="font/Aijia">Aijia</a></p>
         </li>
-        <li class="box">
+        <li class="box handwriting">
             <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Dave">Font5</a></p>
+            <p class="fontName"><a href="font/Taeil">Taeil</a></p>
         </li>
-        <li class="box">
+        <li class="box handwriting">
             <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Dave">Font6</a>></p>
+            <p class="fontName"><a href="font/Gilbert">Gilbert</a></p>
         </li>
 
     </ul>
