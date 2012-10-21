@@ -1,1 +1,94 @@
-<h1>SPOTIFONT HOMEPAGE GOES HERE! BOOYA</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotifont - It's like Spotify for Fonts!</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif|Covered+By+Your+Grace|Open+Sans|Squada+One' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <!-- JS -->
+    <!-- These are for autocomplete -->
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <script src="../static/js/availableTags.js"></script> <!-- This contains the available tags -->
+
+    <!-- These are for buttons -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <!-- Header -->
+    <div id="header">
+        <a id="logo" href="boxes.html"><img src="../static/img/logo.png" alt="Spotifont" /></a>
+        <div id="login">login</div>
+    </div>
+
+    <!-- Search and filter bar -->
+    <div id="searchAndFilter">
+
+        <!-- Search -->
+        <div id="search">
+            <label for="tags" id="tagLabel">Search Tags: </label>
+            <input id="tags" placeholder="eg. decorative, funny, awesome, cool"/>
+            <button type="button" class="btn" id="searchButton">Search</button>
+        </div>
+
+        <!-- Filter -->
+        <div id="filter">
+            <div id="filterButtons" class="btn-group" data-toggle="buttons-checkbox" >
+              <button type="button" class="btn btn-large" id="serif">SF</button>
+              <button type="button" class="btn btn-large" id="sansserif">SF</button>
+              <button type="button" class="btn btn-large" id="display">SF</button>
+              <button type="button" class="btn btn-large" id="handwriting">SF</button>
+            </div>
+            <table id="filterLabels">
+                <tr>
+                    <td>Serif</td>
+                    <td>Sans-Serif</td>
+                    <td>Display</td>
+                    <td>Handwriting</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Results / Boxes -->
+    <ul id="boxes">
+        <li class="box">
+            <ul class="tagCloud">
+                <li class="tag3">avant garde</li>
+                <li class="tag5">cool</li>
+                <li class="tag1">eurostile</li>
+                <li class="tag5">experimental</li>
+            </ul>
+            <p class="fontName">Font1</p>
+        </li>
+        <li class="box">
+            <p class="cloud">Tag Tag Tag</p>
+            <p class="fontName">Font2</p>
+        </li>
+        <li class="box">
+            <p class="cloud">Tag Tag Tag</p>
+            <p class="fontName">Font3</p>
+        </li>
+        <li class="box">
+            <p class="cloud">Tag Tag Tag</p>
+            <p class="fontName">Font4</p>
+        </li>
+        <li class="box">
+            <p class="cloud">Tag Tag Tag</p>
+            <p class="fontName">Font5</p>
+        </li>
+        <li class="box">
+            <p class="cloud">Tag Tag Tag</p>
+            <p class="fontName">Font6</p>
+        </li>
+
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+/* Page stuff */
+html {background-color:#6D7B8D;}
+body {width:960px; margin:0 auto; background-image:url("../img/grey.png"); }
+
+/* Header */
+#header {background-color:#F7931E; padding:0; height:75px; width:960px; border-bottom:solid #CC5323; display:block;}
+
+#logo {}
+#login {display:inline; position:relative; top:-10px; left:650px; padding:10px;}
+
+
+/* Search and Filter */
+#searchAndFilter {padding:5px 10px 0 17px; height:58px; border-bottom:solid #AAA 2px; }
+
+/* Search */
+#search {display:inline; }
+#tagLabel {display:inline; font-size:18px; font-weight:bold; }
+#tags {
+    border: 2px solid gray; 
+    padding: 5px;
+    margin: 8px 0 10px 5px;
+    width:400px;
+    font-size:18px;
+}
+#searchButton {margin-left:4px;}
+.ui-autocomplete { height:300px; overflow-y: scroll; overflow-x: hidden;}
+
+/* Filter */
+#filter {display:inline; margin:0px; float:right;}
+#filterButtons button {height:36px; width:70px; font-size:22px; }
+#serif {font-family: 'Droid Serif', serif; padding:0;}
+#sansserif {font-family: 'Open Sans', sans-serif; padding:0;}
+#display {font-family: 'Squada One', cursive; padding:0;}
+#handwriting {font-family: 'Covered By Your Grace', cursive; padding:0;}
+
+#filterLabels {font-size: 11px; }
+#filterLabels tr td {width:68px; text-align:center; }
+
+/* Results and boxes */
+
+.fontName { padding:0; font-size:20px; font-weight:normal; font-style:normal; color:#000; position:absolute; bottom:0px; left:20px;}
+
+
+ul#boxes { clear:both; float:left; list-style-type:none; margin:0; padding:0; background-image:url("../img/grey.png");}
+
+ul li.box { line-height:18px; float:left; width:200px; height: 200px; padding:8px; margin:10px; border:1px solid #DDD; color:#333; position:relative; background-color:#FFF;}
+
+ul li.box:hover{ color:#cff400;}
+
+/* Tag cloud */
+
+	.tagCloud {
+		margin:1em 0;
+		padding:.5em 10px;
+		text-align:center;
+		}
+	.tagCloud li{
+		margin:0;
+		list-style:none;
+		display:inline;
+		}
+	
+	.tag1{font-size:67%;}
+	.tag2{font-size:100%; padding:3px 0 3px 0;}
+	.tag3{font-size:133%; padding:6px 0 6px 0;}
+	.tag4{font-size:167%; padding:9px 0 9px 0;}
+	.tag5{font-size:200%; padding:12px 0 12px 0;}
