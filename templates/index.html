@@ -20,21 +20,35 @@
 
     <!-- Aijia's code -->
     <script type="text/javascript">
-        var data = [{"fontname":"Waiting For The Sunrise", "controlled":"serif"},
-                    {"fontname": "Abril Fatface", "controlled":"serif"}, 
-                    {"fontname": "Actor", "controlled":"sans-serif"},
-                    {"fontname": "Aijia", "controlled":"display"},
-                    {"fontname": "Taeil", "controlled":"handwriting"},
-                    {"fontname": "Gilbert", "controlled":"display"}
-                  ];
 
         $(document).ready(function()  {
             
             $("#searchButton").click(function() {
-                 var path = $("#search").val();
-                 console.log(path);
-                $("#search").action = $("#search").action  + path ;
-                $("#search").submit();
+                 var path = $("#tags").val();
+                 $.getJSON("/search/" + path, function(data) {
+                    var boxesHtml = ""
+
+                    /* Loop through JSON file and create the HTML content */
+                    for (var i=0;i<data.length;i++)
+                    {
+                    var thisBox = '<li id="' + data[i].fontname + '" class="box ' + data[i].controlled + '"><ul class="tagCloud"> \
+                    <li class="tag3">avant garde</li> \
+                    <li class="tag5">cool</li> \
+                    <li class="tag1">eurostile</li> \
+                    <li class="tag5">experimental</li> \
+                    </ul><p class="fontName"><a href="font/Dave">' + data[i].fontname + '</a></p></li>';
+                    boxesHtml = boxesHtml + thisBox;
+                    }
+
+                    /* Edit the HTML with JSON content */
+                    document.getElementById("boxes").innerHTML = boxesHtml;
+
+                    /* Loop through JSON file and edit the CSS content */
+                    for (var i=0;i<data.length;i++)
+                    {
+                    document.getElementById(data[i].fontname).style.fontFamily = data[i].fontname;
+                    }
+                });
             });
 
             $("#serif-Button").click(function() {
@@ -80,11 +94,11 @@
 
         <!-- Search -->
         <div id="search">
-            <form id="search" action="/search/">
+          
                 <label for="tags" id="tagLabel">Search Tags: </label>
                 <input id="tags" placeholder="eg. decorative, funny, awesome, cool"/>
                 <button type="submit" class="btn" id="searchButton">Search</button>
-            </form>
+            
         </div>
 
         <!-- Filter -->
@@ -108,84 +122,40 @@
 
     <!-- Results / Boxes -->
     <ul id="boxes">
-        <!-- This code isn't necessary anymore
-        <li class="box serif">
-            <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Waiting For The Sunrise">Waiting For The Sunrise</a></p>
-
-        </li>
-        <li class="box serif">
-            <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Abril Fatface">Abril Fatface</a></p>
-
-        <li class="box">
-            <ul class="tagCloud">
-                <li class="tag3">avant garde</li>
-                <li class="tag5">cool</li>
-                <li class="tag1">eurostile</li>
-                <li class="tag5">experimental</li>
-            </ul>
-           
-            <p class="fontName"><a href="font/Dave">Waiting For The Sunrise</a></p>
-
-        </li>
-        <li class="box">
-            <ul class="tagCloud">
-                <li class="tag3">avant garde</li><li class="tag5">cool</li><li class="tag1">eurostile</li><li class="tag5">experimental</li>
-            </ul>
-           
-            <p class="fontName"><a href="font/Dave">Waiting For The Sunrise</a></p>
-        </li>
-        <li class="box sans-serif">
-            <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Actor">Actor</a></p>
-        </li>
-        <li class="box display">
-            <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Aijia">Aijia</a></p>
-        </li>
-        <li class="box handwriting">
-            <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Taeil">Taeil</a></p>
-        </li>
-        <li class="box handwriting">
-            <p class="cloud">Tag Tag Tag</p>
-            <p class="fontName"><a href="font/Gilbert">Gilbert</a></p>
-        </li>
-        -->
+        
     </ul>
 
 <!-- JSON implementation -->
 <script>
 /* Sample JSON File */
-var JSONObject2 = [
-    {"fontname": "Droid Serif", "controlled": "serif" },
-    {"fontname": "Open Sans", "controlled": "sans-serif" },
-    {"fontname": "Squada One", "controlled": "display" },
-    {"fontname": "Covered By Your Grace", "controlled": "handwriting" }
-];
-var boxesHtml = ""
+        var JSONObject2 = [
+            {"fontname": "Droid Serif", "controlled": "serif" },
+            {"fontname": "Open Sans", "controlled": "sans-serif" },
+            {"fontname": "Squada One", "controlled": "display" },
+            {"fontname": "Covered By Your Grace", "controlled": "handwriting" }
+        ];
+        var boxesHtml = ""
 
-/* Loop through JSON file and create the HTML content */
-for (var i=0;i<JSONObject2.length;i++)
-{
-var thisBox = '<li id="' + JSONObject2[i].fontname + '" class="box ' + JSONObject2[i].controlled + '"><ul class="tagCloud"> \
-<li class="tag3">avant garde</li> \
-<li class="tag5">cool</li> \
-<li class="tag1">eurostile</li> \
-<li class="tag5">experimental</li> \
-</ul><p class="fontName"><a href="font/Dave">' + JSONObject2[i].fontname + '</a></p></li>';
-boxesHtml = boxesHtml + thisBox;
-}
+        /* Loop through JSON file and create the HTML content */
+        for (var i=0;i<JSONObject2.length;i++)
+        {
+        var thisBox = '<li id="' + JSONObject2[i].fontname + '" class="box ' + JSONObject2[i].controlled + '"><ul class="tagCloud"> \
+        <li class="tag3">avant garde</li> \
+        <li class="tag5">cool</li> \
+        <li class="tag1">eurostile</li> \
+        <li class="tag5">experimental</li> \
+        </ul><p class="fontName"><a href="font/Dave">' + JSONObject2[i].fontname + '</a></p></li>';
+        boxesHtml = boxesHtml + thisBox;
+        }
 
-/* Edit the HTML with JSON content */
-document.getElementById("boxes").innerHTML = boxesHtml;
+        /* Edit the HTML with JSON content */
+        document.getElementById("boxes").innerHTML = boxesHtml;
 
-/* Loop through JSON file and edit the CSS content */
-for (var i=0;i<JSONObject2.length;i++)
-{
-document.getElementById(JSONObject2[i].fontname).style.fontFamily = JSONObject2[i].fontname;
-}
+        /* Loop through JSON file and edit the CSS content */
+        for (var i=0;i<JSONObject2.length;i++)
+        {
+        document.getElementById(JSONObject2[i].fontname).style.fontFamily = JSONObject2[i].fontname;
+        }
 
 </script>
 
