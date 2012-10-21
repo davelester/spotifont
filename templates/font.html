@@ -11,48 +11,15 @@
 	<script type="text/javascript" src="../static/js/jquery.tagbox.js"></script>
 
 	<script type="text/javascript">
-		var data = [
-				 	{"name": "Abril Fatface", "id":"1", "tag":{"awesome":4, "cool":6},"category":"Display"}, 
-				 	{"name": "Actor", "id":"2", "tag":{"hilarious":4, "happy":6}, "category":"Sans Serif"}
-				  ];
-
-		$(document).ready(function()  {
-			var items = [];
-			$.each(data, function(index, value) {//each object in "data"
-				$.each(value, function(key,val) {//each key/value pair 
-					if (key != "tag") {
-						 	items.push(val);
-					} else {
-						$.each(val, function(k,v) {
-							items.push(v);
-						});
-					}//else 
-					
-				});
-				/*$('<ul/>', {
-					'class':'my-new-list',
-					html:items.join('')
-				}).appendTo('#test');*/
-			});
-			
-			$("#font_name h1").append(items[0]);
-			
-			$("#pangram p").css("font-family",items[0]);
-			
-			$("#tags").append("#" + "awesome " + items[2]);
-
-			//this function 
-			
-		      $("#jquery-tagbox-text").tagBox();
-		      	
-    		
+		$(document).ready(function() {
+			$("#jquery-tagbox-text").tagBox();
 		});
 	</script>
 </head>
 
 <body>
 	<div id="container">
-		<div id="font_name"><h1></h1></div><!--font_name-->
+		<div id="font_name"><h1>{{name}}</h1></div><!--font_name-->
 		<div id="pangram">
 			<h2>Pangram</h2>
 			<p>Cwm fjord veg balks nth pyx quiz.</p>
