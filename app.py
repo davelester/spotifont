@@ -34,9 +34,7 @@ def search(query):
 		ret+='{"fontname": "' + font.font_name +'", "controlled": "' + font.controlled_name +'"}'
 	ret += ']'
 
-<<<<<<< HEAD
-@app.route("/font/<fontname>" )
-=======
+
 	resp = Response(response=ret,
 					status=200,
 					mimetype="application/json")
@@ -44,7 +42,6 @@ def search(query):
 	return resp
 	
 @app.route("/font/<fontname>")
->>>>>>> 6c905a94fab79b9cb3c1ad7ced4ccfbf21672aa2
 def font(fontname):
 	# todo: should pull only unique tags, and also return the count of the times a tag appears for a given font
 	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.font_name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id AND t.type='u'")
