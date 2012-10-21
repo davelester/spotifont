@@ -89,8 +89,8 @@
     <!-- Header -->
     <div id="header">
         <a id="logo" href="/"><img src="../static/img/logo.png" alt="Spotifont" /></a>
-				{% if g.userid %}
-				<div id="logout">You're logged in! AWESOME</div>
+				{% if userid %}
+				<div id="logout"><a href="/logout">Logout</a></div>
 				{% else %}
         <div id="login"><a href="/login"><img src="../static/img/facebook-login-button.png"></a></div>
 				{% endif %}

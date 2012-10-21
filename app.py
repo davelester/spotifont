@@ -35,7 +35,8 @@ def close_connection(response):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+	userid = session.get('userid')
+	return render_template("index.html", userid=userid)
 
 @app.route("/search/<query>")
 def search(query):
@@ -79,6 +80,11 @@ def facebook_authorized(resp):
 	session['userid'] = me.data['id']
 	return redirect(url_for('index'))
 
+
+@app.route('/logout')
+def logout():
+	session.pop('userid', None)
+	return redirect(url_for('index'))
 
 @facebook.tokengetter
 def get_facebook_oauth_token():
