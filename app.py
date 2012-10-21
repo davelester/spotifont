@@ -1,5 +1,4 @@
 from tornado.database import Connection
-<<<<<<< HEAD
 from flask import request
 from os import environ
 from flask import Flask, g, render_template, Response
