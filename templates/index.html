@@ -29,6 +29,19 @@
                   ];
 
         $(document).ready(function()  {
+            
+            $("#searchButton").click(function() {
+                 var path = $("#search").val();
+                 
+                 console.log(path);
+
+                $("#search").action = $("#search").action  + path ;
+
+                $("#search").submit();
+            });
+
+
+
 
             $("#serif-Button").click(function() {
 
@@ -77,9 +90,11 @@
 
         <!-- Search -->
         <div id="search">
-            <label for="tags" id="tagLabel">Search Tags: </label>
-            <input id="tags" placeholder="eg. decorative, funny, awesome, cool"/>
-            <button type="button" class="btn" id="searchButton">Search</button>
+            <form id="search" action="/search/">
+                <label for="tags" id="tagLabel">Search Tags: </label>
+                <input id="tags" placeholder="eg. decorative, funny, awesome, cool"/>
+                <button type="submit" class="btn" id="searchButton">Search</button>
+            </form>
         </div>
 
         <!-- Filter -->
