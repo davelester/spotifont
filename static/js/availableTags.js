@@ -1,6 +1,7 @@
 
 $(function() {
-    var availableTags = [
+    var availableTags =["thematrix","cray"];
+    /*var availableTags = [
     "1950s",
     "1960s",
     "60s",
@@ -207,7 +208,9 @@ $(function() {
     'wide',
     'wood',
     'zombie',
-    ];
+    ];*/
+
+   
         function split( val ) {
             return val.split( /,\s*/ );
         }
@@ -251,3 +254,4 @@ $(function() {
                 }
             });
     });
+    
