@@ -22,10 +22,12 @@
     <script type="text/javascript">
 
         $(document).ready(function()  {
-            
+           
             $("#searchButton").click(function() {
+                 
                  var path = $("#tags").val();
                  $.getJSON("/search/" + path, function(data) {
+                   
                     var boxesHtml = ""
 
                     /* Loop through JSON file and create the HTML content */
@@ -48,26 +50,32 @@
                     {
                     document.getElementById(data[i].fontname).style.fontFamily = data[i].fontname;
                     }
-                });
-            });
 
+                    if (boxesHtml == "") {
+                         document.getElementById("boxes").innerHTML = "Sorry, no fonts are found for this tag. :(";
+                    }
+                   
+                    
+                });//.getJson
+            });//click
+    
             $("#serif-Button").click(function() {
-                $(".serif").toggle("slow", function() {
+                $(".Serif").toggle("slow", function() {
                 });
             });
             
             $("#sans-serif-Button").click(function() {
-                $(".sans-serif").toggle("slow", function() {
+                $(".Sans Serif").toggle("slow", function() {
                 });
             });
 
             $("#display-Button").click(function() {
-                $(".display").toggle("slow", function() {
+                $(".Display").toggle("slow", function() {
                 });
             });
 
              $("#handwriting-Button").click(function() {
-                $(".handwriting").toggle("slow", function() {
+                $(".Handwriting").toggle("slow", function() {
                 });
             });
         });
@@ -129,10 +137,10 @@
 <script>
 /* Sample JSON File */
         var JSONObject2 = [
-            {"fontname": "Droid Serif", "controlled": "serif" },
-            {"fontname": "Open Sans", "controlled": "sans-serif" },
-            {"fontname": "Squada One", "controlled": "display" },
-            {"fontname": "Covered By Your Grace", "controlled": "handwriting" }
+            {"fontname": "Droid Serif", "controlled": "Serif" },
+            {"fontname": "Open Sans", "controlled": "Sans Serif" },
+            {"fontname": "Squada One", "controlled": "Sisplay" },
+            {"fontname": "Covered By Your Grace", "controlled": "Handwriting" }
         ];
         var boxesHtml = ""
 
