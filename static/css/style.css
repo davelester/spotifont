@@ -28,10 +28,10 @@ body {width:960px; margin:0 auto; background-image:url("../img/grey.png"); }
 /* Filter */
 #filter {display:inline; margin:0px; float:right;}
 #filterButtons button {height:36px; width:70px; font-size:22px; }
-#serif {font-family: 'Droid Serif', serif; padding:0;}
-#sansserif {font-family: 'Open Sans', sans-serif; padding:0;}
-#display {font-family: 'Squada One', cursive; padding:0;}
-#handwriting {font-family: 'Covered By Your Grace', cursive; padding:0;}
+#serifButton {font-family: 'Droid Serif', serif; padding:0;}
+#sansserifButton {font-family: 'Open Sans', sans-serif; padding:0;}
+#displayButton {font-family: 'Squada One', cursive; padding:0;}
+#handwritingButton {font-family: 'Covered By Your Grace', cursive; padding:0;}
 
 #filterLabels {font-size: 11px; }
 #filterLabels tr td {width:68px; text-align:center; }
