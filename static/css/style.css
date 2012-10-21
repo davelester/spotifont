@@ -59,7 +59,8 @@ ul li.box { line-height:18px; float:left; width:213px; height:150px; margin:0 0 
 	color-stop(0%, white), color-stop(75%, white), color-stop(75%, #EFEBE3)); 
 	}
 
-ul li.box:hover{color:#FFF;}
+ul li.box:hover{background: -webkit-gradient(linear, left top, left bottom, 
+	color-stop(0%, #E3F4FD), color-stop(75%, #E3F4FD), color-stop(75%, #EFEBE3)); ;}
 
 /* Tag cloud */
 
