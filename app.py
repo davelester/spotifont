@@ -80,6 +80,7 @@ def facebook_authorized(resp):
 		)
 	session['oauth_token'] = (resp['access_token'], '')
 	me = facebook.get('/me')
+	g.userid = me.data['id']
 	return render_template("index.html")
 
 
