@@ -46,12 +46,17 @@ def ilen(it):
 def search(query):
 	fonts = g.db.iter("SELECT DISTINCT f.font_name, f.font_display_name, c.controlled_name FROM Fonts AS f, Tags as t, Tag_Links as tl, Controlled as c WHERE c.font_id=f.id AND f.id=tl.font_id AND tl.tag_id=t.id AND t.tag_name='" + query + "'")
 
+	fontcount = 0
+	
 	ret = '['
 	for font in fonts:
 		ret+='{"fontname": "' + font.font_name +'", "fontdisplayname": "' + font.font_display_name +'", "controlled": "' + font.controlled_name +'"}'
 		ret+=','
+		fontcount+=1
 
-	ret = ret[:-1]
+	# strip the trailing comma in order to display valid JSON
+	if (fontcount > 0):
+		ret = ret[:-1]
 	ret += ']'
 
 	resp = Response(response=ret,
