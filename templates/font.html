@@ -1,59 +1,95 @@
 <!DOCTYPE html>
 <head>
-	<title></title>
+	<title>Spotifont - Font</title>
 
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="../static/css/style.css" >
 	<link id= "fontstyle" rel="stylesheet" type="text/css" href="" >
 	<link rel="stylesheet" type="text/css" href="../static/css/jquery.tagbox.css" >
+	<link rel="stylesheet" type="text/css" href="../static/css/font.css" >
+	<link rel="stylesheet" type="text/css" href="../static/css/jquery.tagbox.css" > 
 
 	<script type="text/javascript" src="../static/js/jquery-1.8.2.min.js"></script>
 	<!--<script type="text/javascript" src="js/tagthefont.js"></script>-->
 	<script type="text/javascript" src="../static/js/jquery.tagbox.js"></script>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			//grab the name of the font
-			var fontName = $("h1").html();
-			//set the link of the CSS sheet dynamically through jquery 
-			$("#fontstyle").attr("href","http://fonts.googleapis.com/css?family=" + fontName);
-			//display the pangram in the font that is requested
-			$(".pangram").css("font-family",fontName);
-			$("#font_name").css("font-family",fontName);
-		});
+	$(document).ready(function() {
+		//grab the name of the font
+		var fontName = $("h1").html();
+		//set the link of the CSS sheet dynamically through jquery 
+		$("#fontstyle").attr("href","http://fonts.googleapis.com/css?family=" + fontName);
+		//display the pangram in the font that is requested
+		$(".pangram").css("font-family",fontName);
+		$("#font_name").css("font-family",fontName);
+	});
+	</script>
+	
+	<!-- Random pangram generator -->
+	<script type="text/javascript"> 
+		function generate(){
+			
+			var pangrams = ["Five hexing wizard bots jump quickly.", "Pack my box with five dozen liquor jugs.", "The quick brown fox jumps over a lazy dog.", "Quest judge wizard bonks foxy chimp love.", "When zombies arrive, quickly fax judge Pat.", "A quick chop jolted my big sexy frozen wives.", "Brawny gods just flocked up to quiz and vex him.", "Foxy diva Jennifer Lopez wasn't baking my quiche!", "By Jove! My quick study of lexicography won a prize!", "Painful zombies quickly watched a jinxed graveyard.", "My girl wove six dozen plaid jackets before she quit.", "Grumpy wizards make a toxic brew for the jovial queen.", "Bored?? Craving a pub quiz fix?? Why, just come to the Royal Oak!", "Jaded zombies acted quaintly but kept driving their oxen forward."];
+			
+			var randNum = Math.random();
+			var roundNum = Math.round(randNum*14)-1;
+			if(roundNum < 0){
+				roundNum = 0;
+			}
+
+			document.getElementById("randPangram").innerHTML = pangrams[roundNum];
+		}
 	</script>
 </head>
 
-<body>
-  <div id="header">
-      <a id="logo" href="/"><img src="../static/img/logo.png" alt="Spotifont" /></a>
-			{% if userid %}
-			<div id="logout"><a href="/logout">Logout</a></div>
-			{% else %}
-      <div id="login"><a href="/login"><img src="../static/img/facebook-login-button.png"></a></div>
-			{% endif %}
-  </div>
+<body onload='generate()'>
+    <!-- Header -->
+    <div id="header">
+        <a id="logo" href="/"><img src="../static/img/logo.png" alt="Spotifont" /></a>
+				{% if userid %}
+				<div id="logout"><a href="/logout">Logout</a></div>
+				{% else %}
+        <div id="login"><a href="/login"><img src="../static/img/facebook-login-button.png"></a></div>
+				{% endif %}
+    </div>
 
-	<div id="container">
 		<div id="font_name"><h1>{{displayname}}</h1></div><!--font_name-->
-		<h2 class="pangram">"Jaded zombies acted quaintly but kept driving their oxen forward."</h2>
 
-		<h2>Controlled Vocabulary</h2>
-		<p>{{controlled}}</p>
+    <ul id="boxes">
+    	<div id="row1">
+			<!-- Pangram -->
+			<div class="fontWindow" id="pangram">
+				<h2 class="boxHeader">Pangram</h2>
+				<p id="randPangram" class="pangram">Cwm fjord veg balks nth pyx quiz.</p>
+				<input type=button id="pangramButton" class="btn" value='New Pangram!' onClick='generate()';>
+			</div>
 
-		<h2>Tags</h2>
-		<ul class="taglist">	
-		{% for tag in tags %}
-			<li>{{ tag.tag_name}}</li>
-		{% endfor %}
-		</ul>
+			<!-- Controlled vocabulary -->
+			<div class="fontWindow" id="controlledVocab">
+				<h2 class="boxHeader">Controlled Vocabulary</h2>
+				<p id="controlledName">{{controlled}}</p>
+			</div>
+		</div>
+
+		<!-- Tags -->
+		<div class="fontWindow" id="fontTags">
+			<h2 class="boxHeader">Tags</h2>
+			<ul class="taglist">	
+			{% for tag in tags %}
+				<li>{{ tag.tag_name}}</li>
+			{% endfor %}
+			</ul>
+		</div>
 		
-		<h2>Add your own tags</h2>
-		{% if userid %}
-		<form action="/font/{{name}}/addtag" method="post"><input id="tags" name="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add Tag">Add Tag</button>
-		{% else %}
-    <p>You must <a href="/login">login</a> to Spotifont in order to begin tagging fonts</p>
-		{% endif %}
-		
-	</div><!--container--> 
+		<!-- Add Tags -->
+		<div id="addTag">
+			<h2>Add your own tags</h2>
+			{% if userid %}
+			<form action="/font/{{name}}/addtag" method="post"><input id="tags" name="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add Tag">Add Tag</button>
+			{% else %}
+	    <p>You must <a href="/login">login</a> to Spotifont in order to begin tagging fonts</p>
+			{% endif %}
+		</div>
+	</ul>
 </body>
 </html>

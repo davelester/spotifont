@@ -5,3 +5,35 @@
   font-weight: 400;
   src: local('Abril Fatface'), local('AbrilFatface-Regular'), url(http://themes.googleusercontent.com/static/fonts/abrilfatface/v5/X1g_KwGeBV3ajZIXQ9VnDokaQb-UsZVONjobs91YQtw.woff) format('woff');
 }
+
+.fontWindow { line-height:1em; float:left; width:213px; padding:0; margin:0 0 20px 20px; border:1px solid #DDD; color:#333; position:relative; background-color:#FFF;
+
+	/* outer shadows  (note the rgba is red, green, blue, alpha) */
+	-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 0px 1px 3px rgba(23, 69, 88, .5);
+
+	/* rounded corners */
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 8px; 
+	border-radius: 8px;
+	}
+
+h1 {margin:10px 0 0 20px;}
+.boxHeader {padding:0 10px 0 10px; margin:0; font-size:20px; background-color:#EFEBE3;}
+h2 {font-size:20px; margin:0;}
+
+#row1 {width:960px; height:100%;}
+
+#pangram {font-size:40px; padding:0; width:650px;}
+#randPangram {line-height:1.2em; padding:10px 13px 0 13px;}
+#pangramButton {margin:13px; display:block;}
+
+#controlledVocab {width:245px; height:100%;}
+#controlledName {margin:10px;}
+
+#fontTags {width:920px; margin-bottom:5px;}
+.taglist {margin:10px;}
+
+#addTag {clear:both; margin:20px; margin-top:0px;}
+#tags {margin-top:0px;}
+#addTagButton {margin:5px; margin-bottom:13px;}
