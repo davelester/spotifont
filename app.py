@@ -40,11 +40,11 @@ def index():
 
 @app.route("/search/<query>")
 def search(query):
-	fonts = g.db.iter("SELECT DISTINCT f.font_name, c.controlled_name FROM Fonts AS f, Tags as t, Tag_Links as tl, Controlled as c WHERE c.font_id=f.id AND f.id=tl.font_id AND tl.tag_id=t.id AND t.tag_name='" + query + "'")
+	fonts = g.db.iter("SELECT DISTINCT f.font_name, f.font_display_name, c.controlled_name FROM Fonts AS f, Tags as t, Tag_Links as tl, Controlled as c WHERE c.font_id=f.id AND f.id=tl.font_id AND tl.tag_id=t.id AND t.tag_name='" + query + "'")
 
 	ret = '['
 	for font in fonts:
-		ret+='{"fontname": "' + font.font_name +'", "controlled": "' + font.controlled_name +'"}'
+		ret+='{"fontname": "' + font.font_name +'", "fontdisplayname": "' + font.font_display_name +'","controlled": "' + font.controlled_name +'"}'
 	ret += ']'
 
 	resp = Response(response=ret,
