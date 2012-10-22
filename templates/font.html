@@ -25,7 +25,7 @@
 
 
 		//tag input validation
-		$("#Add Tag").click("submit", function() {
+		$("#Add-Tag").click("submit", function() {
 			var alphaExp = /^[a-zA-Z]+$/;
 			var user_tag = $("#tags").val();
 			if (user_tag == "" ) {
@@ -101,7 +101,7 @@
 		<div id="addTag">
 			<h2>Add your own tags</h2>
 			{% if userid %}
-			<form action="/font/{{name}}/addtag" method="post"><input id="tags" name="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add Tag">Add Tag</button>
+			<form action="/font/{{name}}/addtag" method="post"><input id="tags" name="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add-Tag">Add Tag</button>
 			{% else %}
 	    <p>You must <a href="/login">login</a> to Spotifont in order to begin tagging fonts</p>
 			{% endif %}
