@@ -61,7 +61,8 @@ http://spotifont.herokuapp.com/
 Chrome, Firefox 
 
 ### Bugs, Quirks, Easter Eggs
-The auto complete on the homepage currently has a bug in it. It doesn't dynamically pull all the exisiting tags because our own API doesn't support that yet. We placed some static values in it for now. 
+* Tag autocomplete has a bug and doesn't dynamically pull all the exisiting tags because our own API doesn't support that yet. We placed some static values in it for now. 
+* Controlled Vocab faceted browse buttons are actually reversed. They should all be depressed by default.
 
 ## Examples of Search API
 We needed a structured way to query and parse font data, so we created the Spotifont search API. The API is accessible by visiting ```http://spotifont.herokuapp.com/search/tagname```, where ```tagname``` is the uncontrolled term that's being searched for.
