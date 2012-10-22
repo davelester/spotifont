@@ -38,13 +38,20 @@ def index():
 	userid = session.get('userid')
 	return render_template("index.html", userid=userid)
 
+# counting a generator. thnx Stack Overflow! http://stackoverflow.com/questions/5384570/whats-the-shortest-way-to-count-the-number-of-items-in-a-generator-iterator
+def ilen(it):
+    return len(list(it))
+
 @app.route("/search/<query>")
 def search(query):
 	fonts = g.db.iter("SELECT DISTINCT f.font_name, f.font_display_name, c.controlled_name FROM Fonts AS f, Tags as t, Tag_Links as tl, Controlled as c WHERE c.font_id=f.id AND f.id=tl.font_id AND tl.tag_id=t.id AND t.tag_name='" + query + "'")
 
 	ret = '['
 	for font in fonts:
-		ret+='{"fontname": "' + font.font_name +'", "fontdisplayname": "' + font.font_display_name +'","controlled": "' + font.controlled_name +'"}'
+		ret+='{"fontname": "' + font.font_name +'", "fontdisplayname": "' + font.font_display_name +'", "controlled": "' + font.controlled_name +'"}'
+		ret+=','
+
+	ret = ret[:-1]
 	ret += ']'
 
 	resp = Response(response=ret,
@@ -97,7 +104,6 @@ def login():
     return facebook.authorize(callback=url_for('facebook_authorized',
         next=request.args.get('next') or request.referrer or None,
         _external=True))
-
 
 @app.route('/login/authorized')
 @facebook.authorized_handler
