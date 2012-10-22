@@ -67,15 +67,16 @@ ul li.box:hover{background: -webkit-gradient(linear, left top, left bottom,
 /* Tag cloud */
 
 	.tagCloud {
-		margin:1em 0;
-		padding:.5em 10px;
+		margin:20px 0;
+		padding:0;
 		text-align:center;
 		}
 	.tagCloud li{
 		margin:0;
 		list-style:none;
-		display:inline;
-		font-size:12pt;
+		display:block;
+		line-height:34px;
+		font-size:24px;
 		}
 	
 	

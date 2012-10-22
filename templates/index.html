@@ -44,8 +44,8 @@
 
                        //add html content to each box
                         var thisBox = '<li id="' + data[i].fontdisplayname + '" class="box ' + data[i].controlled + '"><ul class="tagCloud"> \
-                        <li class="tag3">Sf</li> \
-                        <li class="tag5">SF</li> \
+                        <li class="tag3">SF</li> \
+                        <li class="tag5">sf</li> \
                         <li class="tag1">sf</li> \
                         <li class="tag5">sF</li> \
                         </ul><p class="fontName"><a href="font/' + data[i].fontname + '">' + data[i].fontdisplayname + '</a></p></li>';
@@ -170,15 +170,33 @@
         var boxesHtml = ""
 
         /* Loop through JSON file and create the HTML content */
+        var randWords = ["Five", "Hexing", "Wizard", "Liquor", "Brown", "Chimp", "Frozen", "Brawny", "Flocked", "Quiche",, "Jinxed", "Plaid", "Jackets", "Grumpy", "Jovial", "Queen",];
+
         for (var i=0;i<JSONObject2.length;i++)
         {
-        var thisBox = '<li id="' + JSONObject2[i].fontdisplayname + '" class="box ' + JSONObject2[i].controlled + '"><ul class="tagCloud"> \
-        <li>sF</li>\
-        <li>Sf</li>\
-        <li>sf</li> \
-        <li>SF</li> \
-        </ul><p class="fontName"><a href="font/' + JSONObject2[i].fontname + '">' + JSONObject2[i].fontdisplayname + '</a></p></li>';
-        boxesHtml = boxesHtml + thisBox;
+            var randNum = Math.random();
+            var roundNum = Math.round(randNum*16)-1;
+            if(roundNum < 0){
+                roundNum = 0;
+            }
+            if(roundNum > 15){
+                roundNum = 15;
+            }
+
+            var randNum2 = Math.random();
+            var roundNum2 = Math.round(randNum2*16)-1;
+            if(roundNum2 < 0){
+                roundNum2 = 0;
+            }
+            if(roundNum2 > 15){
+                roundNum2 = 15;
+            }
+
+            var thisBox = '<li id="' + JSONObject2[i].fontdisplayname + '" class="box ' + JSONObject2[i].controlled + '"><ul class="tagCloud"> \
+            <li>' + randWords[roundNum] + '</li>\
+            <li>' + randWords[roundNum2] + '</li>\
+            </ul><p class="fontName"><a href="font/' + JSONObject2[i].fontname + '">' + JSONObject2[i].fontdisplayname + '</a></p></li>';
+            boxesHtml = boxesHtml + thisBox;
         }
 
         /* Edit the HTML with JSON content */
