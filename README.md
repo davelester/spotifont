@@ -20,7 +20,7 @@ __Features / What it Does__
 * Search fonts by tags (user generated)
 * Filter fonts with a controlled vocabulary (eg. serif)
 * Displays fonts their tags
-* Font pages display their font in pangrams
+* Fonts displayed in randomly displayed pangrams ([thnx Wikipedia!](http://en.wikipedia.org/wiki/List_of_pangrams))
 * Users can add their own tags
 
 ## What's Under the Hood
@@ -30,8 +30,8 @@ Our database includes four tables with the following fields:
 
 * __Fonts__:  id, font_name (unstructured), and font_display_name (structured)
 * __Controlled__: id, font_id, controlled_name (e.g., Sans Serif, Serif, etc.)
-* __tag_links__: id, font_id, tag_id, user_id, and timestamp. Referring to this table, we can know who tagged for what font at what time.
-* __tags__: id and tag_name. The id here is the same id within tag_links.
+* __Tag_Links__: id, font_id, tag_id, user_id, and timestamp. Referring to this table, we can know who tagged for what font at what time.
+* __Tags__: id and tag_name. The id here is the same id within tag_links.
 
 ## Connection to Cory Doctorow’s straw man
 
