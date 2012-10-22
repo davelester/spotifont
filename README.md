@@ -1,7 +1,7 @@
 Spotifont
 =====================
 
-A site for font discovery. "Spotify for fonts." 
+A site for font discovery. "Spotify for fonts." Started as an assignment for [IO Lab, Fall 2012](http://courses.ischool.berkeley.edu/i290-iol/f12/).
 
 ## Project Team and Roles
 * [Dave Lester](http://davelester.org) - Database and Python Nerd. Bends Flask to his will.
@@ -30,8 +30,8 @@ Our database includes four tables with the following fields:
 
 * __Fonts__:  id, font_name (unstructured), and font_display_name (structured)
 * __Controlled__: id, font_id, controlled_name (e.g., Sans Serif, Serif, etc.)
-* __Tag_Links__: id, font_id, tag_id, user_id, and timestamp. Referring to this table, we can know who tagged for what font at what time.
-* __Tags__: id and tag_name. The id here is the same id within tag_links.
+* __Tag_Links__: id, font_id, tag_id, user_id, and timestamp
+* __Tags__: id and tag_name
 
 ## Connection to Cory Doctorow’s straw man
 
@@ -49,7 +49,7 @@ It is important to note that there are words that are under a strictly controlle
 By displaying the fonts in their tags, people get to really feel the word as they read it. This is great for font exploration and inspiration.
 
 ### Technologies Used
-Python (Flask, Tornado DB), HTML, CSS, Javascript, Oauth and a snazzy library to connect Flask to Facebook
+Python (Flask, Tornado DB), HTML, CSS, Javascript, Oauth + a snazzy lib to connect Flask -> Fb, and Heroku to deploy
 
 ### URL of the repository on github
 https://github.com/davelester/spotifont
