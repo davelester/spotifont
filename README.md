@@ -4,18 +4,18 @@ Spotifont
 A site for font discovery. "Spotify for fonts." 
 
 ## Project Team and Roles
-* [Dave Lester](http://davelester.org) - Database and Python Nerd
-* [Taeil Kwak](http://www.ischool.berkeley.edu/people/students/taeilkwak) - Front-end Design Champion. Brings team member Froyo because he's awesome.
-* [Aijia Yan](http://aijiayan.com) - Front-end, Javascript, and Python Wiz.
+* [Dave Lester](http://davelester.org) - Database and Python Nerd. Bends Flask to his will.
+* [Taeil Kwak](http://www.ischool.berkeley.edu/people/students/taeilkwak) - Front-end Design Champion. CSS and all the like. Brings team member Froyo because he's awesome.
+* [Aijia Yan](http://aijiayan.com) - Front-end, Javascript, and Python Wiz. Connected the search API with the front-end like a pro.
 
+## Project Description
+There are nuances in font description and discovery that can only be expressed by particular words. Serif and Sans-Serif capture style, not the use, meaning, or associations of a font. Fonts can be strong, childish, or elegant; because of this we've sought to make it easier to discover fonts around these terms: we call it Spotifont.
 
-## Project Description (what it does, how you went about it, etc.)
+Powered by tags that the online community has added to describe fonts in our database, Spotifont allows users to the site to perform searches based on emotions and characteristics, not just the controlled vocabulary.
 
-There are nuances in font description and discovery that can only be expressed by particular words. Spotifont goes beyond the typical controlled vocabularies used to describe fonts, such as Serif and Sans-serif, etc. Fonts can be described as strong, childish, or elegant. But, it is really difficult to characterize these words, because they are so subjective and not concrete. Using the power of tags and the online community, we can begin to accurately apply these words to particular fonts, and then perform searches based on emotions and characteristics, not just the controlled vocabulary.
+Using the Google Webfonts API, we are able to organize and display hundreds of fonts. These fonts are also free to use, lowering the barrier of entry to any user. Most well-organized font sites charge for their fonts, and we want this to be as open as possible. Fork our code, or drop us a line!
 
-Using the Google Webfonts API, we are able to organize and display hundreds of fonts. These fonts are also free to use, lowering the barrier of entry to any user. Most well-organized font sites charge for their fonts.
-
-__Features__
+__Features / What it Does__
 * Login with Facebook Connect
 * Search fonts by tags (user generated)
 * Filter fonts with a controlled vocabulary (eg. serif)
