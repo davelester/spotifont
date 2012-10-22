@@ -22,3 +22,7 @@ $(document).ready(function(){
     });
 });
 </script>
+
+
+// <form name="myform" action="/font/{{name}}/addtag/">
+

@@ -57,9 +57,28 @@ def search(query):
 def font(fontname):
 	# todo: should pull only unique tags, and also return the count of the times a tag appears for a given font
 	tags = g.db.iter("SELECT t.* FROM Fonts AS f, Tags as t, Tag_Links as tl WHERE f.font_name='"+fontname+"' AND f.id=tl.font_id AND tl.tag_id=t.id")
+	controlled = g.db.iter("SELECT c.* FROM Controlled as c, Fonts as f WHERE f.font_name='"+fontname+"' AND f.id=c.font_id")
 	userid = session.get('userid')
-	return render_template("font.html", tags=tags, name=fontname, userid=userid)
+	return render_template("font.html", tags=tags, name=fontname, userid=userid, controlled=controlled)
 
+@app.route("/font/<fontname>/addtag/<newtag>")
+def addtags(fontname, newtag):
+	if (session.get('userid') == None):
+		return "you must be logged in to see this page"
+	else:	
+		userid = session.get('userid')
+		# grab the id for the selected font
+		font = g.db.get("SELECT id FROM Fonts WHERE font_name='" + fontname + "'")
+
+		# check if tag already has id. if tag doesn't exist, create a new db entry
+		tag = g.db.get("SELECT id FROM Tags WHERE tag_name='" + newtag + "'")
+		if (tag == None):
+			g.db.execute("INSERT INTO Tags (tag_name) VALUES (%s)", newtag)
+			tag = g.db.get("SELECT id FROM Tags WHERE tag_name='" + newtag + "'")
+	
+		g.db.execute("INSERT INTO Tag_Links (font_id, tag_id, user_id) VALUES (%s, %s, %s)", font.id, tag.id, userid)
+
+		return redirect('/font/'+fontname)
 
 @app.route('/login')
 def login():

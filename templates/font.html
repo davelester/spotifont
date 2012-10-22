@@ -24,7 +24,7 @@
 		<p class="panagram">Cwm fjord veg balks nth pyx quiz.</p>
 
 		<h2>Controlled Vocabulary</h2>
-		<p>Will be pulled from database</p>
+		<p>{{controlled.controlled_name}}</p>
 
 		<h2>Tags</h2>
 		<ul class="taglist">	
@@ -33,9 +33,9 @@
 		{% endfor %}
 		</ul>
 		
-		<h2>Add your own tags</h2>
+		<h2>Add your own tags (/addtags/tagname/)</h2>
 		{% if userid %}
-		<p><a href="/font/{{name}}/addtags">Add tags to this font!</a></p>
+		<input id="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add Tag">Add Tag</button>
 		{% else %}
     <p>Add tags to this font by logging in! <a href="/login"><img src="../static/img/facebook-login-button.png"></a></p>
 		{% endif %}
