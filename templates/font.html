@@ -24,6 +24,15 @@
 </head>
 
 <body>
+  <div id="header">
+      <a id="logo" href="/"><img src="../static/img/logo.png" alt="Spotifont" /></a>
+			{% if userid %}
+			<div id="logout"><a href="/logout">Logout</a></div>
+			{% else %}
+      <div id="login"><a href="/login"><img src="../static/img/facebook-login-button.png"></a></div>
+			{% endif %}
+  </div>
+
 	<div id="container">
 		<div id="font_name"><h1>{{displayname}}</h1></div><!--font_name-->
 		<h2 class="pangram">"Jaded zombies acted quaintly but kept driving their oxen forward."</h2>
