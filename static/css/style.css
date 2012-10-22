@@ -75,7 +75,9 @@ ul li.box:hover{background: -webkit-gradient(linear, left top, left bottom,
 		margin:0;
 		list-style:none;
 		display:inline;
+		font-size:12pt;
 		}
+	
 	
 	.tag1{font-size:67%;}
 	.tag2{font-size:100%; padding:3px 0 3px 0;}
