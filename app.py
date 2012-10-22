@@ -75,10 +75,10 @@ def addtags(fontname, newtag):
 		if (tag == None):
 			g.db.execute("INSERT INTO Tags (tag_name) VALUES (%s)", newtag)
 			tag = g.db.get("SELECT id FROM Tags WHERE tag_name='" + newtag + "'")
-	
+
 		g.db.execute("INSERT INTO Tag_Links (font_id, tag_id, user_id) VALUES (%s, %s, %s)", font.id, tag.id, userid)
 
-		return redirect('/font/'+fontname)
+	return redirect('/font/'+fontname)
 
 @app.route('/login')
 def login():
