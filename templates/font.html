@@ -3,7 +3,7 @@
 	<title></title>
 
 	<link rel="stylesheet" type="text/css" href="../static/css/style.css" >
-	<link rel="stylesheet" type="text/css" href="../static/css/font.css" >
+	<link id= "fontstyle" rel="stylesheet" type="text/css" href="" >
 	<link rel="stylesheet" type="text/css" href="../static/css/jquery.tagbox.css" >
 
 	<script type="text/javascript" src="../static/js/jquery-1.8.2.min.js"></script>
@@ -12,7 +12,13 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#jquery-tagbox-text").tagBox();
+			//grab the name of the font
+			var fontName = $("h1").html();
+			//set the link of the CSS sheet dynamically through jquery 
+			$("#fontstyle").attr("href","http://fonts.googleapis.com/css?family=" + fontName);
+			//display the pangram in the font that is requested
+			$(".pangram").css("font-family",fontName);
+			$("#font_name").css("font-family",fontName);
 		});
 	</script>
 </head>
@@ -21,7 +27,7 @@
 	<div id="container">
 		<div id="font_name"><h1>{{name}}</h1></div><!--font_name-->
 		<h2>Pangram</h2>
-		<p class="panagram">Cwm fjord veg balks nth pyx quiz.</p>
+		<p class="pangram">Jaded zombies acted quaintly but kept driving their oxen forward.</p>
 
 		<h2>Controlled Vocabulary</h2>
 		<p>{{controlled.controlled_name}}</p>
@@ -33,13 +39,13 @@
 		{% endfor %}
 		</ul>
 		
-		<h2>Add your own tags (/addtags/tagname/)</h2>
+		<h2>Add your own tags (/addtag/tagname)</h2>
 		{% if userid %}
 		<input id="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add Tag">Add Tag</button>
 		{% else %}
     <p>Add tags to this font by logging in! <a href="/login"><img src="../static/img/facebook-login-button.png"></a></p>
 		{% endif %}
 		
-	</div><!--container-->
+	</div><!--container--> 
 </body>
 </html>
