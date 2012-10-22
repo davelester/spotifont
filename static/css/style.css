@@ -1,7 +1,7 @@
 /* Page stuff */
 html {background-color:#6D7B8D;}
 body {width:960px; margin:0 auto; background-image:url("../img/grey.png"); }
-#container {padding: 25px;}
+#container {padding: 0 25px 25px 25px;}
 
 /* Header */
 #header {background-color:#F7931E; padding:0; height:75px; width:960px; border-bottom:solid #CC5323; display:block;}
