@@ -64,6 +64,6 @@ Chrome, Firefox
 No significant bugs so far found. 
 
 ## Examples of Search API
-The Search API is accessible by visiting ```localhost:5000/search/tagname```, where ```tagname``` is the uncontrolled term that's being searched for.
+We needed a structured way to query and parse font data, so we created the Spotifont search API. The API is accessible by visiting ```http://spotifont.herokuapp.com/search/tagname```, where ```tagname``` is the uncontrolled term that's being searched for.
 
-The response looks like this: ```[ {"fontname": "Arial", "controlled": "Sans-Serif" }, {"fontname": "Garamond", "controlled": "Serif" } ]```
+The response looks like this: ```[ {"fontname": "arial", "fontdisplayname": "Arial", "controlled": "Sans-Serif" }, {"fontname": "partytime", "fontdisplayname": "Party Time", "controlled": "Serif" } ]```
