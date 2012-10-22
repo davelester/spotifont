@@ -35,12 +35,12 @@ Our database includes four tables with the following fields:
 
 ## Connection to Cory Doctorow’s straw man
 
-1) People are lazy
+__People are lazy__
 All of our tag-fields (both search and tag a font) autocomplete to commonly used tags. By autocompleting, people are assured that their tagging is contributing to the characterization of the font, rather than getting lost as some obscure word.
 
 In the font page, we display some of their most popular tags. This will help people get a feel for tags they could apply. This could be a good starting point, and also serve to work towards a more controlled vocabulary. For example, someone could think that a font is “fancy”, but notice that the word “elegant” is tagged often. They can then tag “elegant” since that feeling is the same as what they intended.
 
-4) Our own project
+__Our own project__
 Often people search for fonts with a certain intention in mind, that they can only put into words that are not normally used. Some examples of words might be “crazy”, “girly”, or “scary”. Since these are such subjective terms, we can only describe them using the power of the community.
 It is important to note that there are words that are under a strictly controlled vocabulary. Some examples of these are “serif” and “sans-serif”. There is a very gray area between what should be controlled and what should be community driven. Some examples of the gray words might be “script” or “modern”. For now, we used the controlled vocabulary that the Google Webfonts API provides, which are “serif”, “sans-serif”, “display”, and “handwriting”. 
 
