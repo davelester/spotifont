@@ -47,11 +47,11 @@
 		{% endfor %}
 		</ul>
 		
-		<h2>Add your own tags (/addtag/tagname)</h2>
+		<h2>Add your own tags</h2>
 		{% if userid %}
-		<input id="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add Tag">Add Tag</button>
+		<form action="/font/{{name}}/addtag" method="post"><input id="tags" name="tags" placeholder="eg. decorative, funny, awesome, cool"/><button type="submit" class="btn" id="Add Tag">Add Tag</button>
 		{% else %}
-    <p>Add tags to this font by logging in! <a href="/login"><img src="../static/img/facebook-login-button.png"></a></p>
+    <p>You must <a href="/login">login</a> to Spotifont in order to begin tagging fonts</p>
 		{% endif %}
 		
 	</div><!--container--> 

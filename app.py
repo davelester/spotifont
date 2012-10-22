@@ -71,12 +71,14 @@ def font(fontname):
 	userid = session.get('userid')
 	return render_template("font.html", tags=tags, name=fontname, userid=userid, controlled=controlled[0], displayname=font_display_name[0])
 
-@app.route("/font/<fontname>/addtag/<newtag>")
-def addtags(fontname, newtag):
+@app.route("/font/<fontname>/addtag", methods=['POST'])
+def addtags(fontname):
 	if (session.get('userid') == None):
 		return "you must be logged in to see this page"
-	else:	
+	else:
+		newtag = request.form.get('tags')
 		userid = session.get('userid')
+
 		# grab the id for the selected font
 		font = g.db.get("SELECT id FROM Fonts WHERE font_name='" + fontname + "'")
 
