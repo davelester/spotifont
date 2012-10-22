@@ -44,10 +44,7 @@
 
                        //add html content to each box
                         var thisBox = '<li id="' + data[i].fontdisplayname + '" class="box ' + data[i].controlled + '"><ul class="tagCloud"> \
-                        <li class="tag3">SF</li> \
-                        <li class="tag5">sf</li> \
-                        <li class="tag1">sf</li> \
-                        <li class="tag5">sF</li> \
+                        <li class="tag3">'+data[i].fontdisplayname+'</li> \
                         </ul><p class="fontName"><a href="font/' + data[i].fontname + '">' + data[i].fontdisplayname + '</a></p></li>';
                         boxesHtml = boxesHtml + thisBox;
                     }
